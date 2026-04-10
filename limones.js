@@ -17,10 +17,12 @@ let limonX=canvas.width/2;
 let limonY=0;
 let puntaje=0;
 let vidas=3;
+let velocidadCaida=200;
 
 
 // FUNCION INICIAR
 function iniciar(){
+setInterval(bajarLimon,velocidadCaida); // PRIMER PARAMETRO: UNA FUNCION COMO TAL Y EL SEGUNDO PARAMETRO RECIBE EL TIEMPO EN MILISEGUNDOS   
 dibujarSuelo();
 dibujarPersonaje();
 dibujarLimon();
@@ -99,34 +101,36 @@ function bajarLimon(){
 
 // FUNCION DETECTAR ATRAPADO
 
-function detectarAtrapado(){
-
-if(limonX+ANCHO_LIMON>personajeX && 
-    limonX < personajeX+ANCHO_PERSONAJE &&
-    limonY+ALTURA_LIMON>personajeY &&
-    limonY < personajeY+ALTURA_PERSONAJE
-)
-    alert("ATRAPADO!!");
-    aparecerLimon();
-    puntaje=puntaje+1;
-    mostrarEnSpan("txtPuntaje", puntaje)
+function detectarAtrapado() {
+    if (limonX + ANCHO_LIMON > personajeX &&
+        limonX < personajeX + ANCHO_PERSONAJE &&
+        limonY + ALTURA_LIMON > personajeY &&
+        limonY < personajeY + ALTURA_PERSONAJE
+    ) { // <-- Abrir llave
+        puntaje = puntaje + 1;
+        mostrarEnSpan("txtPuntaje", puntaje);
+        aparecerLimon(); // El limón vuelve arriba
+    } // <-- Cerrar llave
 }
-
 
 // FUNCION APARECER LIMON
  
 function aparecerLimon(){
-    limonY=generarAleatorio(0,canvas.width-ANCHO_LIMON);
-    limonX=0;
+    // 1. Elegimos una posición horizontal (X) al azar
+    limonX = generarAleatorio(0, canvas.width - ANCHO_LIMON);
+    
+    // 2. Ponemos la posición vertical (Y) en 0 para que empiece arriba
+    limonY = 0; 
+    
     actualizarPantalla();
 }
 
 /// FUNCION DETECTAR PISO
 
 function detectarPiso(){
-    if(limonY+ALTURA_LIMON==canvas.height-ALTURA_SUELO)
-        aparecerLimon();
-       vidas=vidas-1;
-       mostrarEnSpan("txtVidas",vidas);
-
+    if(limonY + ALTURA_LIMON >= canvas.height - ALTURA_SUELO){
+        vidas = vidas - 1;
+        mostrarEnSpan("txtVidas", vidas);
+        aparecerLimon(); 
+    }
 }
