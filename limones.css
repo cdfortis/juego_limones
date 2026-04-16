@@ -1,31 +1,96 @@
 body {
-  font-family: Arial, sans-serif;
-  background-color: #0f172a;
-  color: white;
-  text-align: center;
+  font-family: 'Press Start 2P', cursive; /* Fuente de pixeles */
+  background-color: #000;
+  background-image: linear-gradient(0deg, #111 25%, #000 50%, #111 75%);
+  color: #fff;
   margin: 0;
   padding: 20px;
+  display: flex;
+  justify-content: center;
 }
 
 .contenedor {
-  max-width: 800px;
-  margin: 0 auto;
+  border: 8px solid #333;
+  padding: 30px;
+  background: #1a1a1a;
+  box-shadow: 0 0 50px #000;
+  border-radius: 20px;
+}
+
+h1 {
+  font-size: 24px;
+  color: #fbff00;
+  text-shadow: 3px 3px #ff0055;
+}
+
+/* Animación de parpadeo retro */
+.blink {
+  animation: blinker 1.5s linear infinite;
+}
+@keyframes blinker { 50% { opacity: 0; } }
+
+.subtitle {
+  font-size: 10px;
+  color: #00ff00;
 }
 
 canvas {
-  background-color: #111827;
-  border: 3px solid #38bdf8;
-  display: block;
+  background-color: #000;
+  border: 4px solid #fff;
+  image-rendering: pixelated; /* Mantiene los bordes de los pixeles nítidos */
   margin: 20px auto;
 }
 
-.panel {
+/* Panel de estadísticas tipo 8-bit */
+.panel-stats {
+  display: flex;
+  justify-content: space-around;
   margin: 20px 0;
+  color: #00fbff;
+  font-size: 14px;
 }
 
-.botones button {
-  margin: 5px;
-  padding: 10px 16px;
-  font-size: 16px;
+/* --- BOTONES TIPO MÁQUINA ARCADE --- */
+.arcade-controls {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+.arcade-btn {
+  background: #333; /* Base del botón */
+  border: none;
+  border-radius: 50%;
+  padding: 0;
   cursor: pointer;
+  outline-offset: 4px;
+  position: relative;
+}
+
+/* Parte superior circular del botón */
+.btn-top {
+  display: block;
+  padding: 15px 20px;
+  border-radius: 50%;
+  font-size: 8px;
+  color: white;
+  transform: translateY(-6px);
+  transition: transform 0.1s;
+  border: 2px solid rgba(0,0,0,0.2);
+}
+
+/* Colores de los botones */
+.red .btn-top { background: #d33562; box-shadow: 0 6px #5c1728, inset 0 3px rgba(255,255,255,0.4); }
+.blue .btn-top { background: #354ad3; box-shadow: 0 6px #171d5c, inset 0 3px rgba(255,255,255,0.4); }
+.yellow .btn-top { background: #d3bd35; box-shadow: 0 6px #5c5317, inset 0 3px rgba(255,255,255,0.4); }
+
+/* Efecto al presionar */
+.arcade-btn:active .btn-top {
+  transform: translateY(-2px);
+  box-shadow: 0 2px #5c1728;
+}
+
+.autor-tag {
+  font-size: 8px;
+  opacity: 0.7;
 }

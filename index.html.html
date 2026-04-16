@@ -1,24 +1,39 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-  <title>Caza Estrellas</title>
- <link rel ="stylesheet" href="limones.css"/>
- <script src="utils.js"></script>
+  <meta charset="UTF-8">
+  <title>Caza Estrellas - Retro Edition</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="limones.css"/>
+  <script src="utils.js"></script>
 </head>
 <body onload="iniciar()">
-  <div class="contenedor">
-    <h1>Atrapar Limones</h1>
-    <p>Si del cielo te caen limones ..... </p>
-    <h2>Autor: Cristhian Fortis </h2>
+  <div class="contenedor arcade-cabinet">
+    <header>
+      <h1 class="blink">Atrapar Limones</h1>
+      <p class="subtitle">INSERT COIN TO PLAY</p>
+      <h2 class="autor-tag">Player: Cristhian Fortis</h2>
+    </header>
+
     <canvas id="areaJuego" width="600" height="400"></canvas>
-    <div class="panel">
-      <p>Puntaje: <span id="txtPuntaje">0</span></p>
-      <p>Vidas: <span id="txtVidas">3</span></p>
+
+    <div class="panel-stats">
+      <div class="stat">PUNTAJE: <span id="txtPuntaje">0</span></div>
+      <div class="stat">VIDAS: <span id="txtVidas">3</span></div>
     </div>
-    <div class="botones">
-      <button onclick="moverIzquierda();">Izquierda</button>
-      <button onclick="moverDerecha();">Derecha</button>
-      <button>Reiniciar</button>
+
+    <div class="botones arcade-controls">
+      <button class="arcade-btn red" onclick="moverIzquierda();">
+        <span class="btn-top">Izquierda</span>
+      </button>
+      
+      <button class="arcade-btn blue">
+        <span class="btn-top">Reiniciar</span>
+      </button>
+      
+      <button class="arcade-btn yellow" onclick="moverDerecha();">
+        <span class="btn-top">Derecha</span>
+      </button>
     </div>
   </div>
 <script src="limones.js"></script>
